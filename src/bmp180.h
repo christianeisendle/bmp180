@@ -44,3 +44,4 @@ float bmp180_altitude(void *_bmp);
 
 void bmp180_dump_eprom(void *_bmp, bmp180_eprom_t *eprom);
 
+float bmp180_pressure_at_sea_level(void *_bmp, float alt);

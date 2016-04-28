@@ -537,6 +537,21 @@ float bmp180_altitude(void *_bmp) {
 	return alt;
 }
 
+/**
+ * Returns pressure at sea level when absolute altitude is known.
+ *
+ * @param bmp180 sensor
+ * @param alt altitude in meter
+ * @return pressure at sealevel
+ */
+float bmp180_pressure_at_sea_level(void *_bmp, float alt) {
+	float p, p_at_sea_level;
+	p = bmp180_pressure(_bmp);
+	p_at_sea_level = p / pow(1 - (alt/44330), 5.255);
+
+	return p_at_sea_level;
+}
+
 
 /**
  * Sets the oversampling setting for this sensor.
